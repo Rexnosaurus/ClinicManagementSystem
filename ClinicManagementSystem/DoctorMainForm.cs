@@ -16,5 +16,10 @@ namespace ClinicManagementSystem
         {
             InitializeComponent();
         }
+
+        private void DoctorMainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

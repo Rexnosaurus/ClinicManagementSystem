@@ -17,6 +17,7 @@ namespace ClinicManagementSystem
     {
         ConnectionClass cc = new ConnectionClass();
         AdminMainForm adminMainForm = new AdminMainForm();
+        DoctorMainForm doctorMainForm = new DoctorMainForm();
         public LoginForm()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace ClinicManagementSystem
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
+            string role = "";
 
             if (username == "" || password == "")
             {
@@ -47,6 +49,7 @@ namespace ClinicManagementSystem
             {
                 cc.OpenConnection();
                 string query = "SELECT * FROM users WHERE Username = @Username AND Password = @password";
+                
                 MySqlCommand cmd = new MySqlCommand(query, cc.GetConnection());
 
                 cmd.Parameters.AddWithValue("@username", username);
@@ -54,12 +57,22 @@ namespace ClinicManagementSystem
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.Read())
                 {
-                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK);
-                    adminMainForm.Show();
-                    this.Hide();
+
+                    role = reader.GetString("role");
+                     
+
+                    MessageBox.Show("Login successful!", "Success" + role + "Damn", MessageBoxButtons.OK);
+                    if (role == "Admin")
+                    {
+                        adminMainForm.Show();
+                    } else if (role == "Doctor")
+                        { doctorMainForm.Show();
+                    }
                     
+                    this.Hide();
+                                                           
                 }
                 else
                 {
