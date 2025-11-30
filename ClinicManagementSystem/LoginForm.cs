@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace ClinicManagementSystem
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         ConnectionClass cc = new ConnectionClass();
-
-        public Form1()
+        AdminMainForm adminMainForm = new AdminMainForm();
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -57,8 +57,9 @@ namespace ClinicManagementSystem
                 if (reader.HasRows)
                 {
                     MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK);
-
+                    adminMainForm.Show();
                     this.Hide();
+                    
                 }
                 else
                 {
