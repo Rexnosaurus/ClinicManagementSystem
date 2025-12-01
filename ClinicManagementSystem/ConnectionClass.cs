@@ -1,9 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace LogInForm
 {
@@ -47,5 +49,188 @@ namespace LogInForm
                 connection.Close();
             }
         }
+
+        public int GetNextPatientID()
+        {
+            int nextId = 1;
+            string query = "SELECT MAX(Patient_Id) FROM patientsrecords";
+
+            try
+            {
+                OpenConnection();
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                object result = cmd.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    nextId = Convert.ToInt32(result) + 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching next Patient ID: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return nextId;
+        }
+        public DataTable GetPatientsRecord()
+        {
+
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM patientsrecords";
+
+            try
+            {
+                OpenConnection();
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return dt;
+        }
+
+        public bool InsertPatient(
+            string fname, string mname, string lname, string suffix,
+            string gender, string birthday, string address,
+            string contactNo, string emailAddress)
+        {
+            string query = @"INSERT INTO patientsrecords
+                         (FirstName, MiddleName, LastName, Suffix, Gender, Birthday, Address, ContactNo, EmailAddress)
+                         VALUES
+                         (@fname, @mname, @lname, @suffix, @gender, @birthday, @address, @contactNo, @emailAddress)";
+
+            try
+            {
+                OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@fname", fname);
+                cmd.Parameters.AddWithValue("@mname", mname);
+                cmd.Parameters.AddWithValue("@lname", lname);
+                cmd.Parameters.AddWithValue("@suffix", suffix);
+                cmd.Parameters.AddWithValue("@gender", gender);
+                cmd.Parameters.AddWithValue("@birthday", birthday);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@contactNo", contactNo);
+                cmd.Parameters.AddWithValue("@emailAddress", emailAddress);
+
+                int rows = cmd.ExecuteNonQuery();
+                return rows > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Insert Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool ArchivePatient(int patientId)
+        {
+
+            string queryArchive = @"INSERT INTO archivedpatients
+                            (Patient_Id, FirstName, MiddleName, LastName, Suffix, Gender, Birthday, Address, ContactNo, EmailAddress)
+                            SELECT Patient_Id, FirstName, MiddleName, LastName, Suffix, Gender, Birthday, Address, ContactNo, EmailAddress
+                            FROM patientsrecords
+                            WHERE Patient_Id = @patientId";
+
+            string queryDelete = @"DELETE FROM patientsrecords WHERE Patient_ID = @patientId";
+
+            try
+            {
+                OpenConnection();
+
+                MySqlCommand cmdArchive = new MySqlCommand(queryArchive, connection);
+                cmdArchive.Parameters.AddWithValue("@patientId", patientId);
+                int rowsArchived = cmdArchive.ExecuteNonQuery();
+
+                if (rowsArchived > 0)
+                {
+                    MySqlCommand cmdDelete = new MySqlCommand(queryDelete, connection);
+                    cmdDelete.Parameters.AddWithValue("@patientId", patientId);
+                    cmdDelete.ExecuteNonQuery();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Archive Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool UpdatePatient(
+    int patientId,
+    string fname,
+    string mname,
+    string lname,
+    string suffix,
+    string gender,
+    string birthday,
+    string address,
+    string contactNo,
+    string emailAddress)
+        {
+            string query = @"UPDATE patientsrecords
+                     SET FirstName = @fname, MiddleName = @mname, LastName = @lname,
+                         Suffix = @suffix,
+                         Gender = @gender,
+                         Birthday = @birthday,
+                         Address = @address,
+                         ContactNo = @contactNo,
+                         EmailAddress = @emailAddress
+                     WHERE Patient_Id = @patientId";
+
+            try
+            {
+                OpenConnection();
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@fname", fname);
+                cmd.Parameters.AddWithValue("@mname", mname);
+                cmd.Parameters.AddWithValue("@lname", lname);
+                cmd.Parameters.AddWithValue("@suffix", suffix);
+                cmd.Parameters.AddWithValue("@gender", gender);
+                cmd.Parameters.AddWithValue("@birthday", birthday);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@contactNo", contactNo);
+                cmd.Parameters.AddWithValue("@emailAddress", emailAddress);
+                cmd.Parameters.AddWithValue("@patientId", patientId);
+
+                int rows = cmd.ExecuteNonQuery();
+                return rows > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
     }
 }

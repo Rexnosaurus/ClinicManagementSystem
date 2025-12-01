@@ -50,6 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForms\PatientsRecordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\PatientsRecordsForm.Designer.cs">
+      <DependentUpon>PatientsRecordsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPopUpForms\AddPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPopUpForms\AddPatient.Designer.cs">
+      <DependentUpon>AddPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPopUpForms\UpdatePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPopUpForms\UpdatePatient.Designer.cs">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="AdminMainForm.cs">
       <SubType>Form</SubType>
@@ -71,8 +89,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminForms\PatientsRecordsForm.resx">
+      <DependentUpon>PatientsRecordsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPopUpForms\AddPatient.resx">
+      <DependentUpon>AddPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPopUpForms\UpdatePatient.resx">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoctorMainForm.resx">
       <DependentUpon>DoctorMainForm.cs</DependentUpon>
