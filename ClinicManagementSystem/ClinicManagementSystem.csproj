@@ -50,6 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForms\DASHBOARDadmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\DASHBOARDadmin.Designer.cs">
+      <DependentUpon>DASHBOARDadmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AppointmentSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AppointmentSchedule.Designer.cs">
+      <DependentUpon>AppointmentSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\Records.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\Records.Designer.cs">
+      <DependentUpon>Records.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\PatientsRecordsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +79,24 @@
     </Compile>
     <Compile Include="AdminPopUpForms\AddPatient.Designer.cs">
       <DependentUpon>AddPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPopUpForms\AddAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPopUpForms\AddAppointment.Designer.cs">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPopUpForms\ViewPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPopUpForms\ViewPatient.Designer.cs">
+      <DependentUpon>ViewPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPopUpForms\UpdateAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPopUpForms\UpdateAppointment.Designer.cs">
+      <DependentUpon>UpdateAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminPopUpForms\UpdatePatient.cs">
       <SubType>Form</SubType>
@@ -74,6 +110,25 @@
     </Compile>
     <Compile Include="AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DASHBOARDadmin.cs" />
+    <Compile Include="DoctorsForms\DASHBOARD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorsForms\DASHBOARD.Designer.cs">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorsForms\AppointmentSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorsForms\AppointmentSchedule.Designer.cs">
+      <DependentUpon>AppointmentSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorsForms\PatientRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorsForms\PatientRecords.Designer.cs">
+      <DependentUpon>PatientRecords.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -89,20 +144,47 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminForms\AppointmentSchedule.resx">
+      <DependentUpon>AppointmentSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\DASHBOARDadmin.resx">
+      <DependentUpon>DASHBOARDadmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\PatientsRecordsForm.resx">
       <DependentUpon>PatientsRecordsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\Records.resx">
+      <DependentUpon>Records.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminPopUpForms\AddAppointment.resx">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminPopUpForms\AddPatient.resx">
       <DependentUpon>AddPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPopUpForms\UpdateAppointment.resx">
+      <DependentUpon>UpdateAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminPopUpForms\UpdatePatient.resx">
       <DependentUpon>UpdatePatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminPopUpForms\ViewPatient.resx">
+      <DependentUpon>ViewPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DoctorMainForm.resx">
       <DependentUpon>DoctorMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorsForms\AppointmentSchedule.resx">
+      <DependentUpon>AppointmentSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorsForms\DASHBOARD.resx">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorsForms\PatientRecords.resx">
+      <DependentUpon>PatientRecords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -115,6 +197,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +211,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rounded square.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rounded_square-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\People_circle_outline_icon_svg_png_free_download-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download__1_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White_Modern_Minimalist_Signature_Brand_Logo-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box_Logout_Icon_Vectors__Box_Icons__Logout_Icons__Login_PNG_and_Vector_with_Transparent_Background_for_Free_Download-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2101e0de-3e8a-42c1-865a-06b73ea7d74e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_20251218_135207.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download__2_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White Modern Minimalist Signature Brand Logo %283%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

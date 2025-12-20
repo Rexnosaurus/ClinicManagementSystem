@@ -100,5 +100,10 @@ namespace ClinicManagementSystem.AdminForms
                 getTableData();
             }
         }
+
+        private void dgvPatientsRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,6 +10,8 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicManagementSystem
 {
@@ -18,6 +20,7 @@ namespace ClinicManagementSystem
         ConnectionClass cc = new ConnectionClass();
         AdminMainForm adminMainForm = new AdminMainForm();
         DoctorMainForm doctorMainForm = new DoctorMainForm();
+        
         public LoginForm()
         {
             InitializeComponent();
@@ -25,7 +28,7 @@ namespace ClinicManagementSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -87,5 +90,31 @@ namespace ClinicManagementSystem
             }
         }
 
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+          
+
+        }
+
+   
+
+
+
+
+
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

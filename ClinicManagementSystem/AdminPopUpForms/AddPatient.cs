@@ -79,5 +79,15 @@ namespace ClinicManagementSystem.AdminPopUpForms
         {
             txtPatientId.Text = cc.GetNextPatientID().ToString();
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

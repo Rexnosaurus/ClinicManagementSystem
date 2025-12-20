@@ -14,6 +14,7 @@ namespace ClinicManagementSystem
     public partial class AdminMainForm : Form
     {
         PatientsRecordsForm patientsRecordsForm = new PatientsRecordsForm();
+        
         public AdminMainForm()
         {
             InitializeComponent();
@@ -33,6 +34,21 @@ namespace ClinicManagementSystem
             patientsRecordsForm.Dock = DockStyle.Fill;
 
             patientsRecordsForm.Show();
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlCurrPageName_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
