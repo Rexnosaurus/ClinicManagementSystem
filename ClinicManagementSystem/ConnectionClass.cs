@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace LogInForm
@@ -21,7 +23,7 @@ namespace LogInForm
         {
             username = "root";
             password = "rextcm132";
-            database = "clinicmanagementsystem";
+            database = "clinic_ms";
             link = "localhost";
 
             string connectionString = $"Server={link};Database={database};User ID={username};Password={password};";
@@ -181,26 +183,26 @@ namespace LogInForm
         }
 
         public bool UpdatePatient(
-    int patientId,
-    string fname,
-    string mname,
-    string lname,
-    string suffix,
-    string gender,
-    string birthday,
-    string address,
-    string contactNo,
-    string emailAddress)
+            int patientId,
+            string fname,
+            string mname,
+            string lname,
+            string suffix,
+            string gender,
+            string birthday,
+            string address,
+            string contactNo,
+            string emailAddress)
         {
             string query = @"UPDATE patientsrecords
-                     SET FirstName = @fname, MiddleName = @mname, LastName = @lname,
-                         Suffix = @suffix,
-                         Gender = @gender,
-                         Birthday = @birthday,
-                         Address = @address,
-                         ContactNo = @contactNo,
-                         EmailAddress = @emailAddress
-                     WHERE Patient_Id = @patientId";
+                         SET FirstName = @fname, MiddleName = @mname, LastName = @lname,
+                             Suffix = @suffix,
+                             Gender = @gender,
+                             Birthday = @birthday,
+                             Address = @address,
+                             ContactNo = @contactNo,
+                             EmailAddress = @emailAddress
+                         WHERE Patient_Id = @patientId";
 
             try
             {
@@ -230,6 +232,82 @@ namespace LogInForm
                 CloseConnection();
             }
         }
+
+        public DataTable SearchPatients(string keyword)
+        {
+            DataTable dt = new DataTable();
+
+            string query = @"
+        SELECT *
+        FROM patientsrecords
+        WHERE FirstName LIKE @search
+           OR MiddleName LIKE @search
+           OR LastName LIKE @search
+           OR Address LIKE @search
+           OR ContactNo LIKE @search";
+
+            try
+            {
+                OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@search", "%" + keyword + "%");
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Search Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return dt;
+        }
+
+        public string SearchIdPatient(string keyword)
+        {
+            string patient_Name = "";
+
+            string query = @"
+        SELECT FirstName, MiddleName, LastName
+        FROM patientsrecords
+        WHERE Patient_Id LIKE @search
+        LIMIT 1";
+
+            try
+            {
+                OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@search", keyword + "%"); // search as you type
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    patient_Name = reader["FirstName"].ToString() + " " +
+                                   reader["MiddleName"].ToString() + " " +
+                                   reader["LastName"].ToString();
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Search Error: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return patient_Name;
+        }
+
 
 
     }

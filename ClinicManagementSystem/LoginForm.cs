@@ -16,6 +16,7 @@ namespace ClinicManagementSystem
     public partial class LoginForm : Form
     {
         ConnectionClass cc = new ConnectionClass();
+        
         AdminMainForm adminMainForm = new AdminMainForm();
         DoctorMainForm doctorMainForm = new DoctorMainForm();
         public LoginForm()
@@ -67,12 +68,13 @@ namespace ClinicManagementSystem
                     if (role == "Admin")
                     {
                         adminMainForm.Show();
+                        
                     } else if (role == "Doctor")
                         { doctorMainForm.Show();
                     }
                     
                     this.Hide();
-                                                           
+                    adminMainForm.Show();
                 }
                 else
                 {

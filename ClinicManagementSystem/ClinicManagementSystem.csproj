@@ -50,11 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForms\AppointmentsSchedulesForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AppointmentsSchedulesForms.Designer.cs">
+      <DependentUpon>AppointmentsSchedulesForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\PatientsRecordsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminForms\PatientsRecordsForm.Designer.cs">
       <DependentUpon>PatientsRecordsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPopUpForms\AddAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPopUpForms\AddAppointment.Designer.cs">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminPopUpForms\AddPatient.cs">
       <SubType>Form</SubType>
@@ -69,10 +81,10 @@
       <DependentUpon>UpdatePatient.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionClass.cs" />
-    <Compile Include="AdminMainForm.cs">
+    <Compile Include="AdminForms\AdminMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminMainForm.Designer.cs">
+    <Compile Include="AdminForms\AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
@@ -89,11 +101,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminForms\AppointmentsSchedulesForms.resx">
+      <DependentUpon>AppointmentsSchedulesForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\PatientsRecordsForm.resx">
       <DependentUpon>PatientsRecordsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminMainForm.resx">
+    <EmbeddedResource Include="AdminForms\AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminPopUpForms\AddAppointment.resx">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminPopUpForms\AddPatient.resx">
       <DependentUpon>AddPatient.cs</DependentUpon>
@@ -128,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Doctor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

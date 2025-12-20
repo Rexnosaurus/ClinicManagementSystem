@@ -1,6 +1,6 @@
 ﻿namespace ClinicManagementSystem.AdminForms
 {
-    partial class PatientsRecordsForm
+    partial class AppointmentsSchedulesForms
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvPatientsRecords = new System.Windows.Forms.DataGridView();
+            this.dgvAppointmentSchedules = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnArchive = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatientsRecords)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentSchedules)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvPatientsRecords
+            // dgvAppointmentSchedules
             // 
-            this.dgvPatientsRecords.AllowUserToAddRows = false;
-            this.dgvPatientsRecords.AllowUserToDeleteRows = false;
-            this.dgvPatientsRecords.AllowUserToResizeColumns = false;
-            this.dgvPatientsRecords.AllowUserToResizeRows = false;
-            this.dgvPatientsRecords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPatientsRecords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dgvPatientsRecords.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dgvPatientsRecords.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvPatientsRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPatientsRecords.Location = new System.Drawing.Point(16, 170);
-            this.dgvPatientsRecords.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvPatientsRecords.Name = "dgvPatientsRecords";
-            this.dgvPatientsRecords.ReadOnly = true;
-            this.dgvPatientsRecords.RowHeadersWidth = 51;
-            this.dgvPatientsRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatientsRecords.Size = new System.Drawing.Size(1580, 375);
-            this.dgvPatientsRecords.TabIndex = 0;
+            this.dgvAppointmentSchedules.AllowUserToAddRows = false;
+            this.dgvAppointmentSchedules.AllowUserToDeleteRows = false;
+            this.dgvAppointmentSchedules.AllowUserToResizeColumns = false;
+            this.dgvAppointmentSchedules.AllowUserToResizeRows = false;
+            this.dgvAppointmentSchedules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvAppointmentSchedules.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvAppointmentSchedules.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dgvAppointmentSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppointmentSchedules.Location = new System.Drawing.Point(16, 170);
+            this.dgvAppointmentSchedules.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvAppointmentSchedules.Name = "dgvAppointmentSchedules";
+            this.dgvAppointmentSchedules.ReadOnly = true;
+            this.dgvAppointmentSchedules.RowHeadersWidth = 51;
+            this.dgvAppointmentSchedules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAppointmentSchedules.Size = new System.Drawing.Size(1580, 375);
+            this.dgvAppointmentSchedules.TabIndex = 0;
             // 
             // btnAdd
             // 
@@ -83,7 +82,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnUpdate.Location = new System.Drawing.Point(725, 650);
+            this.btnUpdate.Location = new System.Drawing.Point(725, 652);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(340, 64);
@@ -101,7 +100,7 @@
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // PatientsRecordsForm
+            // AppointmentsSchedules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,12 +109,12 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnArchive);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.dgvPatientsRecords);
+            this.Controls.Add(this.dgvAppointmentSchedules);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "PatientsRecordsForm";
+            this.Name = "AppointmentsSchedules";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.PatientsRecordsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatientsRecords)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentSchedules)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,7 +122,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvPatientsRecords;
+        private System.Windows.Forms.DataGridView dgvAppointmentSchedules;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnArchive;
         private System.Windows.Forms.Button btnUpdate;

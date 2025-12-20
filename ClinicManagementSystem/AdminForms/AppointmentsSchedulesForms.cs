@@ -11,13 +11,12 @@ using System.Windows.Forms;
 
 namespace ClinicManagementSystem.AdminForms
 {
-    
-    public partial class PatientsRecordsForm : Form
-    {       
+    public partial class AppointmentsSchedulesForms : Form
+    {
         ConnectionClass cc = new ConnectionClass();
 
-        AdminPopUpForms.AddPatientForm addPatient = new AdminPopUpForms.AddPatientForm();
-        public PatientsRecordsForm()
+        AdminPopUpForms.AddAppointment addAppointment = new AdminPopUpForms.AddAppointment();
+        public AppointmentsSchedulesForms()
         {
             InitializeComponent();
         }
@@ -28,44 +27,45 @@ namespace ClinicManagementSystem.AdminForms
         }
         private void getTableData()
         {
-            dgvPatientsRecords.DataSource = cc.GetPatientsRecord();
+            dgvAppointmentSchedules.DataSource = cc.GetPatientsRecord();
         }
 
         private void PatientsRecordsForm_Load(object sender, EventArgs e)
         {
             getTableData();
 
-            dgvPatientsRecords.Columns["Patient_Id"].HeaderText = "Patient ID";
-            dgvPatientsRecords.Columns["FirstName"].HeaderText = "First Name";
-            dgvPatientsRecords.Columns["MiddleName"].HeaderText = "Middle Name";
-            dgvPatientsRecords.Columns["LastName"].HeaderText = "Last Name";
-            dgvPatientsRecords.Columns["Suffix"].HeaderText = "Suffix";
-            dgvPatientsRecords.Columns["Gender"].HeaderText = "Gender";
-            dgvPatientsRecords.Columns["Birthday"].HeaderText = "Birthday";
-            dgvPatientsRecords.Columns["Address"].HeaderText = "Address";
-            dgvPatientsRecords.Columns["ContactNo"].HeaderText = "Contact Number";
-            dgvPatientsRecords.Columns["EmailAddress"].HeaderText = "Email Address";
-            
-            dgvPatientsRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            
+            dgvAppointmentSchedules.Columns["Patient_Id"].HeaderText = "Patient ID";
+            dgvAppointmentSchedules.Columns["FirstName"].HeaderText = "First Name";
+            dgvAppointmentSchedules.Columns["MiddleName"].HeaderText = "Middle Name";
+            dgvAppointmentSchedules.Columns["LastName"].HeaderText = "Last Name";
+            dgvAppointmentSchedules.Columns["Suffix"].HeaderText = "Suffix";
+            dgvAppointmentSchedules.Columns["Gender"].HeaderText = "Gender";
+            dgvAppointmentSchedules.Columns["Birthday"].HeaderText = "Birthday";
+            dgvAppointmentSchedules.Columns["Address"].HeaderText = "Address";
+            dgvAppointmentSchedules.Columns["ContactNo"].HeaderText = "Contact Number";
+            dgvAppointmentSchedules.Columns["EmailAddress"].HeaderText = "Email Address";
+
+            dgvAppointmentSchedules.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            if (addPatient.ShowDialog() == DialogResult.OK) {
+            if (addAppointment.ShowDialog() == DialogResult.OK)
+            {
                 getTableData();
             }
-                
-            addPatient.BringToFront();
+
+            addAppointment.BringToFront();
             
+
         }
 
         private void btnArchive_Click(object sender, EventArgs e)
         {
-            if (dgvPatientsRecords.CurrentRow != null)
+            if (dgvAppointmentSchedules.CurrentRow != null)
             {
-                int patientId = Convert.ToInt32(dgvPatientsRecords.CurrentRow.Cells["Patient_Id"].Value);
+                int patientId = Convert.ToInt32(dgvAppointmentSchedules.CurrentRow.Cells["Patient_Id"].Value);
 
                 DialogResult dr = MessageBox.Show("Do you want to archive this Patient?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -75,7 +75,7 @@ namespace ClinicManagementSystem.AdminForms
                     if (archived)
                     {
                         MessageBox.Show("Patient archived successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        getTableData(); 
+                        getTableData();
                     }
                     else
                     {
@@ -87,14 +87,14 @@ namespace ClinicManagementSystem.AdminForms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvPatientsRecords.CurrentRow == null)
+            if (dgvAppointmentSchedules.CurrentRow == null)
             {
                 MessageBox.Show("Please select a patient to update.");
                 return;
             }
 
             AdminPopUpForms.UpdatePatient updateForm = new AdminPopUpForms.UpdatePatient();
-            updateForm.LoadPatientData(dgvPatientsRecords.CurrentRow);
+            updateForm.LoadPatientData(dgvAppointmentSchedules.CurrentRow);
 
             if (updateForm.ShowDialog() == DialogResult.OK)
             {
@@ -104,7 +104,7 @@ namespace ClinicManagementSystem.AdminForms
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            dgvPatientsRecords.DataSource = cc.SearchPatients(txtSearch.Text);
+            dgvAppointmentSchedules.DataSource = cc.SearchPatients(txtSearch.Text);
         }
     }
 }
